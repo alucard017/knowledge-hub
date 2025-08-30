@@ -10,3 +10,4 @@ cover_url: ""
 
 - Principles and practices for writing maintainable software.
 - Very very happy to read that
+- lol

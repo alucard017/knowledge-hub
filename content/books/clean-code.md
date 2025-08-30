@@ -8,4 +8,4 @@ external_url: "https://example.com/clean-code"
 cover_url: ""
 ---
 
-Principles and practices for writing maintainable software.
+- Principles and practices for writing maintainable software.

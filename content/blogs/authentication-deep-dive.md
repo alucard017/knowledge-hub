@@ -9,9 +9,9 @@ slug: "authentication-authorization-deep-dive"
 ## What is Authentication?
 
 Think of Authentication as a process that verifies who you are—whether you’re a user or a device—before giving access to protected resources.  
-
+<br>
 In simple terms, authentication asks: **Who are you?**  
-
+<br>
 It’s important to note that **Authentication is a visible process**.  
 
 This means the client is aware that they’re being authenticated (e.g., through login forms, tokens, or OTPs).  

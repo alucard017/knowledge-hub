@@ -9,9 +9,9 @@ slug: "authentication-authorization-deep-dive"
 ## What is Authentication?
 
 Think of Authentication as a process that verifies who you are—whether you’re a user or a device—before giving access to protected resources.  
-<br>
+
 In simple terms, authentication asks: **Who are you?**  
-<br>
+
 It’s important to note that **Authentication is a visible process**.  
 
 This means the client is aware that they’re being authenticated (e.g., through login forms, tokens, or OTPs).  
@@ -65,7 +65,7 @@ For example:
 - A **regular user** might be able to view and edit only their profile.  
 - An **admin** might be able to create, edit, or delete users, and manage system settings.  
 
-Authorization typically happens **behind the scenes**—it’s enforced through roles, permissions, or policies at the backend or through middleware.  
+Authorization typically happens **behind the scenes**—it is enforced through roles, permissions, or policies at the backend or through middleware.  
 
 ---
 
@@ -85,17 +85,3 @@ Example: only allow access to a file if the user is in the "Finance" department 
 
 Uses rules and policies to grant or deny access.  
 Example: *"Users can only delete their own posts."*  
-
----
-
-## Authentication vs. Authorization
-
-| Aspect             | Authentication                         | Authorization                         |
-|--------------------|-----------------------------------------|----------------------------------------|
-| **Definition**     | Verifies **who** the user is           | Determines **what** the user can do    |
-| **Question Asked** | "Who are you?"                         | "What are you allowed to do?"          |
-| **Process**        | Login with password, OTP, biometrics   | Enforced via roles, permissions, rules |
-| **Order**          | Always comes **first**                 | Happens **after authentication**       |
-| **Visibility**     | User is aware (login forms, prompts)   | Mostly invisible, handled by system    |
-
----

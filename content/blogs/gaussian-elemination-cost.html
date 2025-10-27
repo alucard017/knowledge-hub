@@ -1,0 +1,148 @@
+---
+title: "The Cost of Gaussian Elimination Explained"
+date: "2025-10-27"
+description: "A clear and intuitive breakdown of how many operations Gaussian Elimination requires, why it grows cubically with matrix size, and what faster alternatives exist."
+tags: ["Linear Algebra", "Gaussian Elimination", "Complexity", "Numerical Methods"]
+slug: "gaussian-elimination-cost-analysis"
+---
+
+<h2>What is Gaussian Elimination?</h2>
+
+<p><strong>Gaussian Elimination</strong> is a method used to solve systems of linear equations. It systematically eliminates variables to reduce the system into an upper triangular form, followed by back-substitution to find the unknowns.</p>
+<p>Essentially, it answers: <em>“How can we convert any system of equations into a simpler one that’s easy to solve?”</em></p>
+
+<hr>
+
+<h2>Why Analyze Its Cost?</h2>
+
+<p>When solving large systems (with <code>n</code> equations and <code>n</code> unknowns), we usually let computers perform the elimination. But before running the algorithm, it’s crucial to know how much <strong>computational effort</strong> it will take.</p>
+
+<p>In Gaussian Elimination, the main question is:</p>
+<blockquote>“How many arithmetic operations (additions, subtractions, multiplications, and divisions) are needed?”</blockquote>
+
+<hr>
+
+<h2>Types of Operations</h2>
+
+<p>During elimination, two main types of operations occur:</p>
+<ol>
+    <li><strong>Division</strong> → To find the multiplier <code>λ</code> (pivot ratio).</li>
+    <li><strong>Multiply–Subtract</strong> → To eliminate elements below the pivot (each considered one operation).</li>
+</ol>
+<p>So every time we zero out an element below the pivot, we perform a <strong>division</strong> and several <strong>multiply–subtracts</strong>.</p>
+
+<hr>
+
+<h2>Step-by-Step Cost Analysis</h2>
+
+<h3>First Column</h3>
+<p>We eliminate elements below the first pivot.</p>
+<ul>
+    <li>There are <code>(n − 1)</code> rows below it.</li>
+    <li>For each row, roughly <code>n</code> operations are needed (to modify entries along that row).</li>
+</ul>
+<p>Total ≈ <code>n(n − 1) = n² − n</code> operations.</p>
+
+<h3>Next Columns</h3>
+<p>In the next steps, the system gets smaller:</p>
+<ul>
+    <li>When only <code>k</code> equations remain, the cost per stage is roughly <code>k² − k</code>.</li>
+</ul>
+<p>To find the total cost, we sum over all stages:</p>
+
+<pre><code>Σ (k² − k) from k=1 to n
+= (1² + 2² + … + n²) − (1 + 2 + … + n)
+= (1/3)(n³ − n)
+</code></pre>
+
+<hr>
+
+<h2>Total Forward Elimination Cost</h2>
+
+<p>Hence, <strong>Forward Elimination</strong> requires approximately:</p>
+<pre><code>(1/3)(n³ − n) ≈ (1/3)n³</code></pre>
+
+<p>That’s <strong>O(n³)</strong> complexity.</p>
+<p>👉 If you double the size (<code>n → 2n</code>), the cost increases roughly <strong>8×</strong>.</p>
+
+<hr>
+
+<h2>Back-Substitution Cost</h2>
+
+<p>Once the matrix is in upper-triangular form:</p>
+<ul>
+    <li>The last variable needs <strong>1 operation</strong>.</li>
+    <li>The second-last needs <strong>2 operations</strong>, and so on.</li>
+</ul>
+
+<p>Total:</p>
+<pre><code>1 + 2 + 3 + … + n = (n(n+1))/2 ≈ (1/2)n²</code></pre>
+<p>That’s much faster — <strong>O(n²)</strong>.</p>
+
+<hr>
+
+<h2>Right-Hand Side (RHS) Operations</h2>
+
+<p>The right-hand side (the constants of each equation) also gets updated during elimination, adding roughly:</p>
+<pre><code>n²</code></pre>
+<p>operations in total — still smaller than the cubic cost of elimination.</p>
+
+<hr>
+
+<h2>Total Computation Summary</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Stage</th>
+            <th>Type</th>
+            <th>Approximate Operations</th>
+            <th>Complexity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Forward Elimination</td>
+            <td>Pivot elimination</td>
+            <td>(n³ / 3)</td>
+            <td>O(n³)</td>
+        </tr>
+        <tr>
+            <td>Back Substitution</td>
+            <td>Solving unknowns</td>
+            <td>(n² / 2)</td>
+            <td>O(n²)</td>
+        </tr>
+        <tr>
+            <td>RHS Updates</td>
+            <td>Maintaining equations</td>
+            <td>(n²)</td>
+            <td>O(n²)</td>
+        </tr>
+        <tr>
+            <td><strong>Total</strong></td>
+            <td></td>
+            <td><strong>≈ n³ / 3</strong></td>
+            <td><strong>O(n³)</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h2>Can It Be Faster?</h2>
+
+<p>Originally, mathematicians believed that no method could beat <code>(n³ / 3)</code> operations. But the <strong>Strassen’s algorithm</strong> surprised everyone by multiplying matrices using only <strong>7 multiplications instead of 8</strong>.</p>
+
+<p>That reduced the complexity from <code>n³</code> to <code>n<sup>log₂7</sup> ≈ n<sup>2.8</sup></code>.</p>
+
+<p>Further research (notably at IBM) pushed the exponent even lower to about <strong>2.376</strong>.</p>
+
+<p>However, in practice:</p>
+<ul>
+    <li>These algorithms have <strong>large constants</strong> (C).</li>
+    <li>They are <strong>hard to implement</strong>.</li>
+    <li>They offer little advantage for typical problem sizes.</li>
+</ul>
+
+<p>So, <strong>Gaussian Elimination</strong> remains the most practical and reliable method in real-world numerical computing.</p>

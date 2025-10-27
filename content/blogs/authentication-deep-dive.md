@@ -2,7 +2,7 @@
 title: "Authentication and Authorization in JavaScript"
 date: "2025-04-15"
 description: "A deep dive into the core concepts of authentication and authorization, with hands-on examples."
-tags: ["JavaScript", "Authentication", "Authorization", "Security"]
+tags: ["JavaScript", "Authentication", "Authorization", "Security"] #pehla tag render hoga path me
 slug: "authentication-authorization-deep-dive"
 ---
 

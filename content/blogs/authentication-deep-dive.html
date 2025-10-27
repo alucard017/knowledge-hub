@@ -9,42 +9,43 @@ slug: "authentication-authorization-deep-dive"
 <h2>What is Authentication?</h2>
 
 <p>Think of Authentication as a process that verifies who you are—whether you’re a user or a device—before giving access to protected resources.</p>
-
 <p>In simple terms, authentication asks: <strong>Who are you?</strong></p>
-
-<p>It’s important to note that <strong>Authentication is a visible process</strong>.</p>
-
-<p>This means the client is aware that they’re being authenticated (e.g., through login forms, tokens, or OTPs).</p>
-
+<p>It’s important to note that <strong>Authentication is a visible process</strong>. This means the client is aware that they’re being authenticated (e.g., through login forms, tokens, or OTPs).</p>
 <p><strong>Authorization</strong>, on the other hand, is handled more silently behind the scenes.</p>
 
 <hr>
 
 <h2>Authentication Types</h2>
 
-<h3>Single-Factor Authentication (SFA)</h3>
-<p>Requires only one credential to verify identity. The most common example is a password-based login. It's simple, but if your password is compromised, you're exposed.</p>
-
-<h3>Two-Factor Authentication (2FA)</h3>
-<p>Requires two layers of verification, usually something you know (a password) and something you have (an OTP sent to your phone or email).</p>
-
-<h3>Multi-Factor Authentication (MFA)</h3>
-<p>Requires two or more verification factors from different categories:</p>
-<ul>
-  <li><strong>Something you know:</strong> Password, PIN</li>
-  <li><strong>Something you have:</strong> Smartphone, Authenticator app, Security token</li>
-  <li><strong>Something you are:</strong> Fingerprint, Face recognition</li>
-</ul>
-
-<h3>Biometric Authentication</h3>
-<p>Uses biological characteristics for identity verification, such as fingerprint scanning, facial recognition, or an iris scan.</p>
+<ol>
+    <li>
+        <h3>Single-Factor Authentication (SFA)</h3>
+        <p>Requires only one credential to verify identity. The most common example is a password-based login. It's simple, but if your password is compromised, you're exposed.</p>
+    </li>
+    <li>
+        <h3>Two-Factor Authentication (2FA)</h3>
+        <p>Requires two layers of verification, usually something you know (a password) and something you have (an OTP sent to your phone or email).</p>
+    </li>
+    <li>
+        <h3>Multi-Factor Authentication (MFA)</h3>
+        <p>Requires two or more verification factors from different categories:</p>
+        <ul>
+            <li><strong>Something you know:</strong> Password, PIN</li>
+            <li><strong>Something you have:</strong> Smartphone, Authenticator app, Security token</li>
+            <li><strong>Something you are:</strong> Fingerprint, Face recognition</li>
+        </ul>
+    </li>
+    <li>
+        <h3>Biometric Authentication</h3>
+        <p>Uses biological characteristics for identity verification, such as fingerprint scanning, facial recognition, or an iris scan.</p>
+    </li>
+</ol>
 
 <hr>
 
 <h2>Why is Authentication Needed?</h2>
 
 <p>Authentication ensures that only legitimate users can access sensitive data or features.</p>
-
 <p>If you're not authenticated, your access will be restricted to public areas of the application, which helps prevent security vulnerabilities.</p>
 
 <hr>
@@ -52,26 +53,29 @@ slug: "authentication-authorization-deep-dive"
 <h2>What is Authorization?</h2>
 
 <p>Authorization is the process of determining <strong>what you’re allowed to do</strong> after you’ve been authenticated.</p>
-
 <p>In other words, once the system knows who you are, authorization answers: <strong>What can you access or perform?</strong></p>
-
 <p>For example:</p>
 <ul>
-  <li>A <strong>regular user</strong> might be able to view and edit only their profile.</li>
-  <li>An <strong>admin</strong> might be able to create, edit, or delete users, and manage system settings.</li>
+    <li>A <strong>regular user</strong> might be able to view and edit only their profile.</li>
+    <li>An <strong>admin</strong> might be able to create, edit, or delete users, and manage system settings.</li>
 </ul>
-
 <p>Authorization typically happens <strong>behind the scenes</strong>—it is enforced through roles, permissions, or policies at the backend or through middleware.</p>
 
 <hr>
 
 <h2>Common Authorization Models</h2>
 
-<h3>Role-Based Access Control (RBAC)</h3>
-<p>Permissions are tied to roles (e.g., <code>Admin</code>, <code>Editor</code>, <code>Viewer</code>). Users are assigned roles, and their access is determined by those roles.</p>
-
-<h3>Attribute-Based Access Control (ABAC)</h3>
-<p>Access is determined by attributes (user attributes, resource attributes, and environment conditions). Example: only allow access to a file if the user is in the "Finance" department and accessing it during office hours.</p>
-
-<h3>Policy-Based Access Control (PBAC)</h3>
-<p>Uses rules and policies to grant or deny access. Example: <em>"Users can only delete their own posts."</em></p>
+<ol>
+    <li>
+        <h3>Role-Based Access Control (RBAC)</h3>
+        <p>Permissions are tied to roles (e.g., <code>Admin</code>, <code>Editor</code>, <code>Viewer</code>). Users are assigned roles, and their access is determined by those roles.</p>
+    </li>
+    <li>
+        <h3>Attribute-Based Access Control (ABAC)</h3>
+        <p>Access is determined by attributes (user attributes, resource attributes, and environment conditions). Example: only allow access to a file if the user is in the "Finance" department and accessing it during office hours.</p>
+    </li>
+    <li>
+        <h3>Policy-Based Access Control (PBAC)</h3>
+        <p>Uses rules and policies to grant or deny access. Example: <em>"Users can only delete their own posts."</em></p>
+    </li>
+</ol>

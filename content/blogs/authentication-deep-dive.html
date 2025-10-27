@@ -22,18 +22,13 @@ slug: "authentication-authorization-deep-dive"
 
 <h2>Authentication Types</h2>
 
-<p><strong>Single-Factor Authentication (SFA)</strong></p>
+<h3>Single-Factor Authentication (SFA)</h3>
+<p>Requires only one credential to verify identity. The most common example is a password-based login. It's simple, but if your password is compromised, you're exposed.</p>
 
-<p>Requires only one credential to verify identity.<br>
-The most common example is a password-based login.<br>
-It's simple, but if your password is compromised, you're exposed.</p>
-
-<p><strong>Two-Factor Authentication (2FA)</strong></p>
-
+<h3>Two-Factor Authentication (2FA)</h3>
 <p>Requires two layers of verification, usually something you know (a password) and something you have (an OTP sent to your phone or email).</p>
 
-<p><strong>Multi-Factor Authentication (MFA)</strong></p>
-
+<h3>Multi-Factor Authentication (MFA)</h3>
 <p>Requires two or more verification factors from different categories:</p>
 <ul>
   <li><strong>Something you know:</strong> Password, PIN</li>
@@ -41,8 +36,7 @@ It's simple, but if your password is compromised, you're exposed.</p>
   <li><strong>Something you are:</strong> Fingerprint, Face recognition</li>
 </ul>
 
-<p><strong>Biometric Authentication</strong></p>
-
+<h3>Biometric Authentication</h3>
 <p>Uses biological characteristics for identity verification, such as fingerprint scanning, facial recognition, or an iris scan.</p>
 
 <hr>
@@ -73,17 +67,11 @@ It's simple, but if your password is compromised, you're exposed.</p>
 
 <h2>Common Authorization Models</h2>
 
-<p><strong>Role-Based Access Control (RBAC)</strong></p>
+<h3>Role-Based Access Control (RBAC)</h3>
+<p>Permissions are tied to roles (e.g., <code>Admin</code>, <code>Editor</code>, <code>Viewer</code>). Users are assigned roles, and their access is determined by those roles.</p>
 
-<p>Permissions are tied to roles (e.g., <code>Admin</code>, <code>Editor</code>, <code>Viewer</code>).<br>
-Users are assigned roles, and their access is determined by those roles.</p>
+<h3>Attribute-Based Access Control (ABAC)</h3>
+<p>Access is determined by attributes (user attributes, resource attributes, and environment conditions). Example: only allow access to a file if the user is in the "Finance" department and accessing it during office hours.</p>
 
-<p><strong>Attribute-Based Access Control (ABAC)</strong></p>
-
-<p>Access is determined by attributes (user attributes, resource attributes, and environment conditions).<br>
-Example: only allow access to a file if the user is in the "Finance" department and accessing it during office hours.</p>
-
-<p><strong>Policy-Based Access Control (PBAC)</strong></p>
-
-<p>Uses rules and policies to grant or deny access.<br>
-Example: <em>"Users can only delete their own posts."</em></p>
+<h3>Policy-Based Access Control (PBAC)</h3>
+<p>Uses rules and policies to grant or deny access. Example: <em>"Users can only delete their own posts."</em></p>
